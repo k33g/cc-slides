@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body { font-family: 'Tahoma'; width: 100%}
+      h1, h2, h3 {
+        font-family: 'Tahoma';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: "Consolas", "Menlo"; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+    </textarea>
+    <script src="js/remark-latest.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    fetch(`slides.md?v=${new Date()}`)
+      .then(response => response.text())
+      .then(content => {
+        console.log("content", content)
+        document.querySelector('#source').innerText = content
+        remark.create({
+          ratio: '16:9'
+        })
+      })
+      .catch(error => console.log(error))
+    </script>
+  </body>
+</html>
